@@ -5,6 +5,8 @@ const db = require("./src/configs/db")
 
 const app = express()
 
+app.use('/images', express.static('images'));
+
 app.use(express.json());
 app.use(cors());
 
@@ -40,10 +42,10 @@ app.get(`/api/products/:keyword`, (req, res) => {
 // });
 
 app.get(`/api/product/:id`, (req, res) => {
-    const sql = `SELECT *,GROUP_CONCAT(products_images.url) AS image_urls FROM products INNER JOIN products_images ON products.id=products_images.product_id where products.id=? GROUP BY products.id ORDER BY products.created_at DESC`;
+    const sql = `SELECT products.*,JSON_ARRAY(GROUP_CONCAT(products_images.url)) AS image_urls FROM products INNER JOIN products_images ON products.id=products_images.product_id where products.id=? GROUP BY products.id ORDER BY products.created_at DESC`;
     db.query(sql, [req.params.id], (err, data) => {
         if (err) return res.json(err);
-        return res.json(data);
+        return res.json(data)
     });
 });
 

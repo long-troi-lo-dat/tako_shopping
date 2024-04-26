@@ -6,7 +6,7 @@ import Breadcrum from "../breadcrum/breadcrum";
 import axios from "../axios";
 import { useEffect, useState } from "react";
 
-const Shop = () => {
+const Products = () => {
     const { productId } = useParams();
     const [product, setProduct] = useState([])
 
@@ -20,6 +20,8 @@ const Shop = () => {
             })
     }, [productId]);
 
+
+
     return (
         <div className="mx-48">
             <Breadcrum product={product} />
@@ -30,4 +32,4 @@ const Shop = () => {
     )
 }
 
-export default Shop;
+export default Products;

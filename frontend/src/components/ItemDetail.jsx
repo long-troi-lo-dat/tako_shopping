@@ -5,29 +5,7 @@ const ItemDetail = (props) => {
 
     const { product } = props;
 
-    const slideImages = [
-        {
-            url: process.env.PUBLIC_URL + "../assets/img/products/" + product.id + "/" + product.thumbnail,
-            name: '',
-            desciption: ""
-        },
-        {
-            url: require("../assets/img/team/chillies/nhim.jpg"),
-            name: '',
-            desciption: ""
-        },
-        {
-            url: require("../assets/img/team/chillies/phuoc.jpg"),
-            name: '',
-            desciption: ""
-        },
-        {
-            url: require("../assets/img/team/chillies/sifu.jpg"),
-            name: '',
-            desciption: ""
-        },
-    ];
-
+    const slideImages = [];
 
     const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -40,8 +18,8 @@ const ItemDetail = (props) => {
     return (
         <div className="mt-10 flex gap-8">
             <div className="">
-                {/* <div className="w-[590px] h-[600px] duration-500" style={{ backgroundImage: `url("../assets/img/products/${props.id}/${props.thumbnail}")` }}></div> */}
-                <div className="w-[590px] h-[600px] duration-500" style={{ backgroundImage: `url(${slideImages[currentIndex].url})` }}></div>
+                <div className="w-[590px] h-[600px] duration-500 bg-no-repeat" style={{ backgroundImage: `url("${process.env.REACT_APP_URL_API}/images/products/${product.id}/${product.thumbnail}")` }}></div>
+                {/* <div className="w-[590px] h-[600px] duration-500" style={{ backgroundImage: `url(${slideImages[currentIndex].url})` }}></div> */}
                 <div className="flex gap-2 mt-2">
                     {slideImages.map((slide, slideIndex) => (
                         <div className="w-[78.24px] h-[78.24px]" style={{ backgroundImage: `url(${slideImages[slideIndex].url})` }} key={slideIndex} onClick={() => goToSlide(slideIndex)}></div>

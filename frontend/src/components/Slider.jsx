@@ -5,22 +5,22 @@ import 'react-slideshow-image/dist/styles.css'
 const Slider = () => {
     const slideImages = [
         {
-            url: require("../assets/img/slider/Thang-4_Banner-DC_HCM.jpg"),
+            url: `${process.env.REACT_APP_URL_API}/images/slider/Thang-4_Banner-DC_HCM.jpg`,
             name: '',
             desciption: ""
         },
         {
-            url: require("../assets/img/slider/Thang-4_Banner-Dich-vu.jpg"),
+            url: `${process.env.REACT_APP_URL_API}/images/slider/Thang-4_Banner-Dich-vu.jpg`,
             name: '',
             desciption: ""
         },
         {
-            url: require("../assets/img/slider/Thang-4_Banner-Metoo.jpg"),
+            url: `${process.env.REACT_APP_URL_API}/images/slider/Thang-4_Banner-Metoo.jpg`,
             name: '',
             desciption: ""
         },
         {
-            url: require("../assets/img/slider/z5330147612963_cc5007914705dc4974a1e128bb8b4b8b.jpg"),
+            url: `${process.env.REACT_APP_URL_API}/images/slider/z5330147612963_cc5007914705dc4974a1e128bb8b4b8b.jpg`,
             name: '',
             desciption: ""
         },
