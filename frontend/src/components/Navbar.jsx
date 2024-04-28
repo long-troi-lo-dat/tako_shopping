@@ -9,7 +9,7 @@ const Navbar = () => {
         <nav className="w-full text-sm bg-[#feb0bd] text-white sticky top-0 z-50 font-semibold h-12">
             <ul className="h-full flex items-center justify-between text-sm uppercase mx-48">
                 <li className="hover:opacity-70" onClick={() => { setMenu("trangchu") }}>
-                    <Link to="" className={menu === "trangchu" ? "py-3 text-[red]" : "py-3"}>
+                    <Link to="/" className={menu === "trangchu" ? "py-3 text-[red]" : "py-3"}>
                         Trang chủ
                     </Link>
                 </li>

@@ -1,70 +1,60 @@
 import React from "react";
 const Login = () => {
     return (
-        // <div className="w-full bg-[#fce3fe] pt-[100px]">
-        //     <div className="w-[580px] h-[600px] bg-white m-auto py-10 px-[60px]">
-        //         <h1 className="my-5 font-semibold text-2xl">Đăng ký</h1>
-        //         <div className="flex flex-col gap-[29px] mt-8">
-        //             <input type="text" placeholder="Tên của bạn" className="h-[72px] w-full pl-5 border-[1px] border-[#c9c9c9] outline-none text-[#5c5c5c] text-[18px]" />
-        //             <input type="email" placeholder="Email của bạn" className="h-[72px] w-full pl-5 border-[1px] border-[#c9c9c9] outline-none text-[#5c5c5c] text-[18px]" />
-        //             <input type="password" placeholder="Mật khẩu của bạn" className="h-[72px] w-full pl-5 border-[1px] border-[#c9c9c9] outline-none text-[#5c5c5c] text-[18px]" />
-        //         </div>
-        //         <button className="w-full h-[72px] text-white bg-[#ff4141] mt-[30px] border-none text-lg cursor-pointer">Đăng ký</button>
-        //         <p className="mt-5 font-medium">Bạn đã có tài khoản? <span className="text-[#ff4141]">Đăng nhập</span></p>
-        //         <div className="flex items-center mt-[25px] gap-5">
-        //             <input type="checkbox" name="" id="" />
-        //             <p>By continuing, i agree to the term of use & privacy policy.</p>
-        //         </div>
-        //     </div>
-        // </div>
-        // <section className="border-red-500 bg-gray-200 min-h-screen flex items-center justify-center">
-        //     <div className="bg-gray-100 p-5 flex rounded-2xl shadow-lg max-w-3xl">
-        //         <div className="md:w-1/2 px-5">
-        //             <h2 className="text-2xl font-bold text-[#002D74]">Login</h2>
-        //             <p className="text-sm mt-4 text-[#002D74]">If you have an account, please login</p>
-        //             <form className="mt-6" action="#" method="POST">
-        //                 <div>
-        //                     <label className="block text-gray-700">Email Address</label>
-        //                     <input type="email" name="" id="" placeholder="Enter Email Address" className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus autocomplete required />
-        //                 </div>
-
-        //                 <div className="mt-4">
-        //                     <label className="block text-gray-700">Password</label>
-        //                     <input type="password" name="" id="" placeholder="Enter Password" minlength="6" className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
-        //           focus:bg-white focus:outline-none" required />
-        //                 </div>
-
-        //                 <div className="text-right mt-2">
-        //                     <a href="/#" className="text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700">Forgot Password?</a>
-        //                 </div>
-
-        //                 <button type="submit" className="w-full block bg-blue-500 hover:bg-blue-400 focus:bg-blue-400 text-white font-semibold rounded-lg
-        //         px-4 py-3 mt-6">Log In</button>
-        //             </form>
-
-        //             <div className="mt-7 grid grid-cols-3 items-center text-gray-500">
-        //                 <hr className="border-gray-500" />
-        //                 <p className="text-center text-sm">OR</p>
-        //                 <hr className="border-gray-500" />
-        //             </div>
-
-        //             <button className="bg-white border py-2 w-full rounded-xl mt-5 flex justify-center items-center text-sm hover:scale-105 duration-300 ">
-        //                 <span className="ml-4">Login with Google</span>
-        //             </button>
-
-        //             <div className="text-sm flex justify-between items-center mt-3">
-        //                 <p>If you don't have an account...</p>
-        //                 <button className="py-2 px-5 ml-3 bg-white border rounded-xl hover:scale-110 duration-300 border-blue-400  ">Register</button>
-        //             </div>
-        //         </div>
-
-        //         <div className="w-1/2 md:block hidden ">
-        //             <img src="https://images.unsplash.com/photo-1614741118887-7a4ee193a5fa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80" className="rounded-2xl" alt="page img" />
-        //         </div>
-
-        //     </div>
-        // </section>
-        <></>
+        <div class="py-36">
+            <div class="flex bg-white rounded-lg shadow-2xl overflow-hidden mx-auto max-w-sm lg:max-w-4xl">
+                <div class="hidden lg:block lg:w-1/2 bg-cover"
+                    style={{ backgroundImage: "url(https://images.unsplash.com/photo-1546514714-df0ccc50d7bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=667&q=80)" }}>
+                </div>
+                <div class="w-full p-8 lg:w-1/2">
+                    <h2 class="text-2xl font-semibold text-gray-700 text-center">Tako Store</h2>
+                    <p class="text-xl text-gray-600 text-center">Chào mừng quay trở lại!!</p>
+                    <a href="/#" class="flex items-center justify-center mt-4 text-white rounded-lg shadow-md hover:bg-gray-100">
+                        <div class="px-4 py-3">
+                            <svg class="h-6 w-6" viewBox="0 0 40 40">
+                                <path
+                                    d="M36.3425 16.7358H35V16.6667H20V23.3333H29.4192C28.045 27.2142 24.3525 30 20 30C14.4775 30 10 25.5225 10 20C10 14.4775 14.4775 9.99999 20 9.99999C22.5492 9.99999 24.8683 10.9617 26.6342 12.5325L31.3483 7.81833C28.3717 5.04416 24.39 3.33333 20 3.33333C10.7958 3.33333 3.33335 10.7958 3.33335 20C3.33335 29.2042 10.7958 36.6667 20 36.6667C29.2042 36.6667 36.6667 29.2042 36.6667 20C36.6667 18.8825 36.5517 17.7917 36.3425 16.7358Z"
+                                    fill="#FFC107" />
+                                <path
+                                    d="M5.25497 12.2425L10.7308 16.2583C12.2125 12.59 15.8008 9.99999 20 9.99999C22.5491 9.99999 24.8683 10.9617 26.6341 12.5325L31.3483 7.81833C28.3716 5.04416 24.39 3.33333 20 3.33333C13.5983 3.33333 8.04663 6.94749 5.25497 12.2425Z"
+                                    fill="#FF3D00" />
+                                <path
+                                    d="M20 36.6667C24.305 36.6667 28.2167 35.0192 31.1742 32.34L26.0159 27.975C24.3425 29.2425 22.2625 30 20 30C15.665 30 11.9842 27.2359 10.5975 23.3784L5.16254 27.5659C7.92087 32.9634 13.5225 36.6667 20 36.6667Z"
+                                    fill="#4CAF50" />
+                                <path
+                                    d="M36.3425 16.7358H35V16.6667H20V23.3333H29.4192C28.7592 25.1975 27.56 26.805 26.0133 27.9758C26.0142 27.975 26.015 27.975 26.0158 27.9742L31.1742 32.3392C30.8092 32.6708 36.6667 28.3333 36.6667 20C36.6667 18.8825 36.5517 17.7917 36.3425 16.7358Z"
+                                    fill="#1976D2" />
+                            </svg>
+                        </div>
+                        <h1 class="px-4 py-3 w-5/6 text-center text-gray-600 font-bold">Đăng nhập với Google</h1>
+                    </a>
+                    <div class="mt-4 flex items-center justify-between">
+                        <span class="border-b w-1/5 lg:w-1/4"></span>
+                        <a href="/#" class="text-xs text-center text-gray-500 uppercase">Đăng nhập bằng gmail</a>
+                        <span class="border-b w-1/5 lg:w-1/4"></span>
+                    </div>
+                    <div class="mt-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Email Address</label>
+                        <input class="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none" type="email" />
+                    </div>
+                    <div class="mt-4">
+                        <div class="flex justify-between">
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Password</label>
+                            <a href="/#" class="text-xs text-gray-500">Forget Password?</a>
+                        </div>
+                        <input class="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none" type="password" />
+                    </div>
+                    <div class="mt-8">
+                        <button class="bg-gray-700 text-white font-bold py-2 px-4 w-full rounded hover:bg-gray-600">Login</button>
+                    </div>
+                    <div class="mt-4 flex items-center justify-between">
+                        <span class="border-b w-1/5 md:w-1/4"></span>
+                        <a href="/register" class="text-xs text-gray-500 uppercase">or sign up</a>
+                        <span class="border-b w-1/5 md:w-1/4"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
     )
 }
 

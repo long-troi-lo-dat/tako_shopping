@@ -6,31 +6,31 @@ export const Service = (props) => {
             <div className="flex justify-around font-normal duration-500">
                 <div className="">
                     <a href="/#" className='hover:text-[#02c4c1]'>
-                        <img src={`${process.env.REACT_APP_URL_API}/images/cate/giao-hang-tan-nha.png`} alt="nothing" loading="lazy" className="h-16 w-auto m-auto" />
+                        <img src={`${process.env.REACT_APP_URL_API}/cate/giao-hang-tan-nha.png`} alt="nothing" loading="lazy" className="h-16 w-auto m-auto" />
                         <span className="">Giao hàng tận nhà</span>
                     </a>
                 </div>
                 <div className="">
                     <a href="/#" className="hover:text-[#02c4c1]">
-                        <img src={`${process.env.REACT_APP_URL_API}/images/cate/boc-qua-gia-re.png`} alt="nothing" loading="lazy" className="h-16 w-auto m-auto" />
+                        <img src={`${process.env.REACT_APP_URL_API}/cate/boc-qua-gia-re.png`} alt="nothing" loading="lazy" className="h-16 w-auto m-auto" />
                         <span className="">Bọc quà giá rẻ</span>
                     </a>
                 </div>
                 <div className="">
                     <a href="/#" className="hover:text-[#02c4c1]">
-                        <img src={`${process.env.REACT_APP_URL_API}/images/cate/tang-thiep-mien-phi.png`} alt="nothing" loading="lazy" className="h-16 w-auto m-auto" />
+                        <img src={`${process.env.REACT_APP_URL_API}/cate/tang-thiep-mien-phi.png`} alt="nothing" loading="lazy" className="h-16 w-auto m-auto" />
                         <span className="">Tặng thiệp miễn phí</span>
                     </a>
                 </div>
                 <div className="">
                     <a href="/#" className="hover:text-[#02c4c1]">
-                        <img src={`${process.env.REACT_APP_URL_API}/images/cate/giat-gau-bong.png`} alt="nothing" loading="lazy" className="h-16 w-auto m-auto" />
+                        <img src={`${process.env.REACT_APP_URL_API}/cate/giat-gau-bong.png`} alt="nothing" loading="lazy" className="h-16 w-auto m-auto" />
                         <span className="">Giặt gấu bông</span>
                     </a>
                 </div>
                 <div className="">
                     <a href="/#" className="hover:text-[#02c4c1]">
-                        <img src={`${process.env.REACT_APP_URL_API}/images/cate/nen-nho-gau.png`} alt="nothing" loading="lazy" className="h-16 w-auto m-auto" />
+                        <img src={`${process.env.REACT_APP_URL_API}/cate/nen-nho-gau.png`} alt="nothing" loading="lazy" className="h-16 w-auto m-auto" />
                         <span className="">Nén nhỏ gấu</span>
                     </a>
                 </div>
