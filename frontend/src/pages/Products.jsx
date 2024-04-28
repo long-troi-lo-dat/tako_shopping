@@ -20,7 +20,7 @@ const Products = () => {
             })
     }, [productId]);
 
-
+    
 
     return (
         <div className="mx-48">

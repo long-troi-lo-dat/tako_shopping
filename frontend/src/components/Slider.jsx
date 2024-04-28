@@ -5,22 +5,22 @@ import 'react-slideshow-image/dist/styles.css'
 const Slider = () => {
     const slideImages = [
         {
-            url: `${process.env.REACT_APP_URL_API}/images/slider/Thang-4_Banner-DC_HCM.jpg`,
+            url: `${process.env.REACT_APP_URL_API}/slider/Thang-4_Banner-DC_HCM.jpg`,
             name: '',
             desciption: ""
         },
         {
-            url: `${process.env.REACT_APP_URL_API}/images/slider/Thang-4_Banner-Dich-vu.jpg`,
+            url: `${process.env.REACT_APP_URL_API}/slider/Thang-4_Banner-Dich-vu.jpg`,
             name: '',
             desciption: ""
         },
         {
-            url: `${process.env.REACT_APP_URL_API}/images/slider/Thang-4_Banner-Metoo.jpg`,
+            url: `${process.env.REACT_APP_URL_API}/slider/Thang-4_Banner-Metoo.jpg`,
             name: '',
             desciption: ""
         },
         {
-            url: `${process.env.REACT_APP_URL_API}/images/slider/z5330147612963_cc5007914705dc4974a1e128bb8b4b8b.jpg`,
+            url: `${process.env.REACT_APP_URL_API}/slider/z5330147612963_cc5007914705dc4974a1e128bb8b4b8b.jpg`,
             name: '',
             desciption: ""
         },
@@ -51,33 +51,7 @@ const Slider = () => {
     // }
 
     return (
-        // <div className="slide-container">
-        //     <Slide>
-        //         {slideImages.map((slideImage, index) => (
-        //             <div key={index}>
-        //                 <div id="slider" style={{ 'backgroundImage': `url(${slideImage.url})` }}>
-        //                     <div className="text-content">
-        //                         <h2 className="text-heading">{slideImage.name}</h2>
-        //                         <div className="text-description">The atmosphere in New York is lorem</div>
-        //                     </div>
-        //                 </div>
-        //             </div>
-        //         ))}
-        //     </Slide>
-        // </div>
-        // <div className="slide-container">
-        //     <Slide>
-        //         {slideImages.map((slideImage, index) => (
-        //             <div key={index}>
-        //                 <div style={{ ...divStyle, 'backgroundImage': `url(${slideImage.url})` }}>
-        //                     <span style={spanStyle}>{slideImage.caption}</span>
-        //                 </div>
-        //             </div>
-        //         ))}
-        //     </Slide>
-        // </div>
         <>
-            {/* <div className="w-full h-full bg-center bg-cover duration-500 slider" style={{ backgroundImage: `url(${slideImages[currentIndex].url})` }}></div> */}
             <div className="w-full h-full bg-center bg-cover duration-500" style={{ backgroundImage: `url(${slideImages[currentIndex].url})` }}></div>
             <div className="absolute bottom-12 left-1/2 -translate-x-[50%] text-center duration-800 text-white">
                 <h4>{slideImages[currentIndex].name}</h4>

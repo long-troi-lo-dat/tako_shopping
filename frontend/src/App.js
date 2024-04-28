@@ -21,19 +21,51 @@ function App() {
   return (
     <div className="App" id="main">
       <BrowserRouter>
-        <Header />
-        <Navbar />
+        {/* <Header />
+        <Navbar /> */}
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={
+            <>
+              <Header />
+              <Navbar />
+              <Home />
+              <Footer />
+            </>
+          }
+          />
           <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
           <Route path="/register" element={user ? <Navigate to="/" /> : <Register />} />
-          <Route path="/cua-hang/:keyword" element={<Category />} />
-          <Route path="/san-pham" element={<Products />} />
-          <Route path="/san-pham/:productId" element={<Products />} />
-          <Route path="/cart" element={<Cart />} />
+          <Route path="/cua-hang/:keyword" element={
+            <>
+              <Header />
+              <Navbar />
+              <Category />
+              <Footer />
+            </>
+          }
+          />
+          <Route path="/san-pham" element={
+            <>
+              <Header />
+              <Navbar />
+              <Products />
+              <Footer />
+            </>
+          }>
+            <Route path=":productId" element={<Products />} />
+          </Route>
+          <Route path="/cart" element={
+            <>
+              <Header />
+              <Navbar />
+              <Cart />
+              <Footer />
+            </>
+          }
+          />
           <Route path="/helloworld" element={<Helloworld />} />
         </Routes>
-        <Footer />
+        {/* <Footer /> */}
       </BrowserRouter>
     </div >
   );
