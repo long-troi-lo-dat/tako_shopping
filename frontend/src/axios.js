@@ -1,5 +1,5 @@
 import axios from "axios";
 
-axios.defaults.baseURL = process.env.REACT_APP_URL_API;
+axios.defaults.baseURL = process.env.REACT_APP_URL_API_LOCAL;
 
 export default axios

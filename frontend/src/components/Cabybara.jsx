@@ -4,19 +4,15 @@ import axios from "../axios";
 
 
 const Cabybara = () => {
-    const [loading, setLoading] = useState(true);
     const [data, setData] = useState([])
 
     useEffect(() => {
-        axios.get(`http://localhost:8080/api/products/capybara`)
+        axios.get(`/api/products/capybara`)
             .then((res) => {
-                console.log(res.data, "data res");
                 setData(res.data);
-                setLoading(false);
             })
             .catch((err) => {
                 console.error("Fetch data failed! :", err);
-                setLoading(false);
             });
     }, []);
     return (
