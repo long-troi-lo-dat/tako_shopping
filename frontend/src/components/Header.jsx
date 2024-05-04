@@ -105,15 +105,12 @@ const Header = () => {
                         <Link to="/cart">Giỏ hàng</Link>
                         <p className="absolute text-xs top-0 right-[-8px]">{totalQuantity}</p>
                     </div>
-                    {localStorage.getItem("token") ?
-                        (<div className="">
-                            <Link to="/login" className="font-medium hover:opacity-60 px-2 py-4 -mr-2">Đăng nhập</Link>
-                        </div>)
-                        :
-                        <div>
-                            Xin chào
-                        </div>
-                    }
+
+                    <div className="">
+                        <Link to="/login" className="font-medium hover:opacity-60 px-2 py-4 -mr-2">Đăng nhập</Link>
+                    </div>
+
+
                 </div>
             </div>
         </header>

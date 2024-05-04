@@ -18,12 +18,9 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
         script: |
-          cd api.thubongstore.online/tako_shoping
+          cd /home/gaubongs/api.thubongstore.online/tako_shopping
           git pull origin main
-          source /home/gaubongs/nodevenv/api.thubongstore.online/tako_shopping/backend/20/bin/activate
-          cd /home/gaubongs/api.thubongstore.online/tako_shopping/backend
-          npm install
-          source /home/gaubongs/nodevenv/api.thubongstore.online/tako_shopping/frontend/10/bin/activate
+          source /home/gaubongs/nodevenv/api.thubongstore.online/tako_shopping/frontend/20/bin/activate
           cd /home/gaubongs/api.thubongstore.online/tako_shopping/frontend
           npm install
           npm run build
