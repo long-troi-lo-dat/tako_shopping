@@ -1,11 +1,12 @@
-
 import React, { createContext, useEffect, useState } from "react";
 
 export const ShopContext = createContext(null)
 
 const ShopContextProvider = (props) => {
 
-    const [cartItems, setCartItems] = useState([]);
+    const [cartItems, setCartItems] = useState(() => {
+        return JSON.parse(sessionStorage.getItem('cartItems')) || []
+    });
 
     const addToCart = (item) => {
         const isItemInCart = cartItems.find((cartItem) => cartItem.id === item.id);
@@ -21,6 +22,10 @@ const ShopContextProvider = (props) => {
         } else {
             setCartItems([...cartItems, { ...item, quantity: 1 }]);
         }
+    };
+
+    const deleteFromCart = (item) => {
+        setCartItems(cartItems.filter((cartItem) => cartItem.id !== item.id));
     };
 
     const removeFromCart = (item) => {
@@ -48,11 +53,11 @@ const ShopContextProvider = (props) => {
     };
 
     useEffect(() => {
-        localStorage.setItem("cartItems", JSON.stringify(cartItems));
+        sessionStorage.setItem("cartItems", JSON.stringify(cartItems));
     }, [cartItems]);
 
     // const contextValue = { getTotalCartItems, getTotalCartAmount, cartItems, addToCart, removeFromCart };
-    const contextValue = { clearCart, getCartTotal, cartItems, addToCart, removeFromCart };
+    const contextValue = { cartItems, addToCart, removeFromCart, deleteFromCart, clearCart, getCartTotal };
     // const contextValue = {};
     return (
         <ShopContext.Provider value={contextValue}>

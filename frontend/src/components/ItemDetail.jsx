@@ -11,9 +11,11 @@ const ItemDetail = (props) => {
         setCurrentIndex(slideIndex)
     }
 
-    const { addToCart, cartItems } = useContext(ShopContext);
+    const { addToCart } = useContext(ShopContext);
 
-
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [product]);
 
     return (
         <div className="mt-10 flex gap-8">

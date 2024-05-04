@@ -1,4 +1,3 @@
-import Carousel from '../components/Carousel';
 import Slider from '../components/Slider';
 import Cabybara from '../components/Cabybara';
 import NewsLetter from '../components/NewsLetter';

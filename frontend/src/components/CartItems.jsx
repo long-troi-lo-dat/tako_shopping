@@ -2,16 +2,16 @@ import React, { useContext, useEffect, useState } from 'react'
 import { ShopContext } from '../context/ShopContext'
 
 export const CartItems = () => {
-    const [cartItems, setCartItems] = useState(localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : [])
+    const [cartItems, setCartItems] = useState(() => { return JSON.parse(sessionStorage.getItem('cartItems')) || [] })
 
-    const { addToCart, removeFromCart, clearCart, getCartTotal } = useContext(ShopContext)
+    const { addToCart, removeFromCart, deleteFromCart, clearCart, getCartTotal } = useContext(ShopContext)
 
     const calculateTotalPrice = (price, quantity) => {
         return price * quantity;
     };
 
     useEffect(() => {
-        const cartItems = localStorage.getItem("cartItems");
+        const cartItems = sessionStorage.getItem("cartItems");
         if (cartItems) {
             setCartItems(JSON.parse(cartItems));
         }
@@ -73,7 +73,7 @@ export const CartItems = () => {
                                                 fill="currentColor"
                                                 height="2em"
                                                 width="2em"
-                                                onClick={() => { removeFromCart(item) }}
+                                                onClick={() => { deleteFromCart(item) }}
                                             >
                                                 <path
                                                     fill="none"
