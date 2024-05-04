@@ -10,8 +10,6 @@ import Home from "./pages/Home";
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Cart from "./pages/Cart";
-// import ShopCategory from './pages/ShopCategory';
-// import Product from './dontuse/Product';
 import Category from './pages/Category';
 import Products from './pages/Products';
 import Helloworld from './pages/Helloworld';
