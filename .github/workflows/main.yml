@@ -25,5 +25,6 @@ jobs:
           npm install
           source /home/gaubongs/nodevenv/api.thubongstore.online/tako_shopping/frontend/10/bin/activate
           cd /home/gaubongs/api.thubongstore.online/tako_shopping/frontend
+          npm install
           npm run build
           cp -r /home/gaubongs/api.thubongstore.online/tako_shopping/frontend/build/. /home/gaubongs/thubongstore.online
