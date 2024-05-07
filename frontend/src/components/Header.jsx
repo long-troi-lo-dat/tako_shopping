@@ -27,16 +27,6 @@ const Header = () => {
         filterProducts(value);
     };
 
-    const handleAuth = () => {
-        axios.get("/checkauth", {
-            headers: {
-                'access-token': localStorage.getItem("token")
-            }
-        })
-            .then(res => setUser(res))
-            .catch(err => console.log(err))
-    }
-
     const getAllProducts = () => {
         axios.get(`/api/products`)
             .then((res) => {
@@ -46,9 +36,26 @@ const Header = () => {
                 console.error("Fetch data failed! :", err)
             })
     }
+    const handleAuth = () => {
+        axios.get("/checkauth", {
+            headers: {
+                'access-token': localStorage.getItem("token")
+            }
+        })
+            .then((res) => {
+                if (res.data && res.data.length > 0) {
+                    setUser(res.user[0]);
+                    console.log(res.user[0])
+                } else {
+                }
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }
     useEffect(() => {
-        handleAuth()
         getAllProducts()
+        handleAuth()
     }, []);
 
     return (
