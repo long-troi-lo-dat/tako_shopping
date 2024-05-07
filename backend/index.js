@@ -32,7 +32,6 @@ const verifyJwt = (req, res, next) => {
                 res.json(err);
             } else {
                 req.id = data.id;
-                req.role = data.role;
                 next()
             }
         })
@@ -43,7 +42,7 @@ app.get("/checkauth", verifyJwt, (req, res) => {
     const sql = `SELECT user.*,roles.name as rolename FROM user INNER JOIN roles on user.role = roles.id WHERE user.id=?`;
     db.query(sql, [req.id], (err, data) => {
         if (err) return res.json(err);
-        return res.json(data);
+        return console.log(res.data);
     });
 })
 

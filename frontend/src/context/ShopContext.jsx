@@ -1,3 +1,4 @@
+import axios from "../axios";
 import React, { createContext, useEffect, useState } from "react";
 
 export const ShopContext = createContext(null)
@@ -56,9 +57,8 @@ const ShopContextProvider = (props) => {
         sessionStorage.setItem("cartItems", JSON.stringify(cartItems));
     }, [cartItems]);
 
-    // const contextValue = { getTotalCartItems, getTotalCartAmount, cartItems, addToCart, removeFromCart };
-    const contextValue = { cartItems, addToCart, removeFromCart, deleteFromCart, clearCart, getCartTotal };
-    // const contextValue = {};
+    const contextValue = { cartItems, addToCart, removeFromCart, deleteFromCart, clearCart, getCartTotal, };
+
     return (
         <ShopContext.Provider value={contextValue}>
             {props.children}
