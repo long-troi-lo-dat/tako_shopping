@@ -1,120 +1,190 @@
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
-const bcrypt = require('bcryptjs');
-const jwt = require("jsonwebtoken")
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const multer = require("multer");
+const fs = require("fs");
+const path = require("path");
+const { v4: uuidv4 } = require("uuid");
 
-dotenv.config({ path: './.env' })
+dotenv.config();
 
-const db = require("./src/configs/db")
+const db = require("./src/configs/db");
 
-const app = express()
+const app = express();
 
-app.use(express.static('./images'))
+const BaseURL = process.env.REACT_APP_URL_LOCAL;
+app.use(
+    cors({
+        origin: BaseURL,
+        credentials: true,
+    })
+);
+
+
+app.use(express.static("./images"));
 app.use(express.json());
-app.use(cors());
 
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        const productId = req.productId;
+        console.log(productId, "productId dòng 32")
+        const dir = `./images/products/${productId}`;
+        if (!fs.existsSync(dir)) {
+            fs.mkdirSync(dir, { recursive: true });
+        }
+        cb(null, dir);
+    },
+    filename: (req, file, cb) => {
+        const productId = req.productId;
+        console.log(productId, "productId dòng 41")
+        const dir = `./images/products/${productId}`;
+        const count = fs.readdirSync(dir).length;
+        cb(null, `${count + 1}.jpg`);
+    },
+});
+
+const upload = multer({ storage });
+
+app.use(express.urlencoded({ extended: false }));
 
 const port = process.env.PORT || 8080;
 
-
 app.get("/", (req, res) => {
     res.send("Welcome back");
-})
+});
+
+app.post("/create-product", upload.array("images", 10), (req, res) => {
+    const productName = req.body.name;
+    const productPrice = req.body.price;
+    const productDescription = req.body.description;
+    const productCategoryId = req.body.category;
+
+    const query =
+        "INSERT INTO products (`name`, `thumbnail`, `price`, `description`, `category_id`) VALUES (?, ?, ?, ?, ?)";
+    db.query(
+        query,
+        [
+            productName,
+            "thumbnail.jpg",
+            productPrice,
+            productDescription,
+            productCategoryId,
+        ],
+        (err, result) => {
+            if (err) {
+                console.error('Failed to insert product:', err);
+                return res.status(500).json({ error: "Failed to create product" });
+            }
+
+            const productId = result.insertId;
+            req.productId = productId;
+
+            // Save images to database
+            const imageQueries = req.files.map((file) => {
+                const imageQuery =
+                    "INSERT INTO products_images (url, product_id) VALUES (?, ?)";
+                return new Promise((resolve, reject) => {
+                    db.query(imageQuery, [file.filename, productId], (err, result) => {
+                        if (err) {
+                            console.error('Failed to insert image:', err);
+                            return reject(err);
+                        }
+                        resolve(result);
+                    });
+                });
+            });
+
+            Promise.all(imageQueries)
+                .then(() =>
+                    res.status(200).json({ message: "Product created", productId })
+                )
+                .catch((err) => {
+                    console.error('Failed to save images:', err);
+                    res.status(500).json({ error: "Failed to save images" });
+                });
+        }
+    );
+});
 
 const verifyJwt = (req, res, next) => {
-    const token = req.headers['access-token'];
+    const token = req.headers["access-token"];
     if (!token) {
-        return res.json("Không có token")
+        return res.json("Không có token");
     } else {
         jwt.verify(token, "jwtSecretKey", (err, data) => {
             if (err) {
                 res.json(err);
             } else {
                 req.id = data.id;
-                next()
+                next();
             }
-        })
+        });
     }
-}
+};
 
 app.get("/checkauth", verifyJwt, (req, res) => {
-    const sql = `SELECT user.*,roles.name as rolename FROM user INNER JOIN roles on user.role = roles.id WHERE user.id=?`;
+    const sql = `SELECT users.*,roles.name as rolename FROM user INNER JOIN roles on users.role = roles.id WHERE users.id=?`;
     db.query(sql, [req.id], (err, data) => {
         if (err) return res.json(err);
         return console.log(res.data);
     });
-})
+});
 
-app.post('/signup', async (req, res) => {
+app.post("/signup", async (req, res) => {
     try {
-        let randomId;
-        let idExists = true;
-
-        while (idExists) {
-            randomId = Math.floor(1000000000 + Math.random() * 9000000000);
-            const checkIdQuery = 'SELECT * FROM `user` WHERE `id` = ?';
-            const data = await new Promise((resolve, reject) => {
-                db.query(checkIdQuery, [randomId], (err, data) => {
-                    if (err) {
-                        reject(err);
-                    } else {
-                        resolve(data);
-                    }
-                });
-            });
-            idExists = data.length > 0;
-        }
-
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
-        const insertUserQuery = "INSERT INTO `user` (`id`, `username`, `email`, `password`,`role`) VALUES (?, ?, ?, ?,3)";
-        const values = [
-            randomId,
-            req.body.ten,
-            req.body.email,
-            hashedPassword,
-        ];
+        const insertUserQuery =
+            "INSERT INTO `users` (`username`, `email`, `password`,`role`) VALUES (?, ?, ?,3)";
+        const values = [req.body.ten, req.body.email, hashedPassword];
 
         db.query(insertUserQuery, values, (err, data) => {
             if (err) {
-                return res.json({ error: 'Đăng ký thất bại', details: err });
+                return res.json({ error: "Đăng ký thất bại", details: err });
             }
-            return res.json({ success: true, message: 'Đăng ký thành công' });
+            return res.json({ success: true, message: "Đăng ký thành công" });
         });
     } catch (error) {
-        return res.json({ error: 'Đăng ký thất bại', details: error.message });
+        return res.json({ error: "Đăng ký thất bại", details: error.message });
     }
 });
 
-app.post('/login', (req, res) => {
+app.post("/login", (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
 
-    const sql = "SELECT user.*,roles.name as rolename FROM `user` INNER JOIN roles on user.role = roles.id WHERE user.email=?";
+    const sql =
+        "SELECT users.*,roles.name as rolename FROM `users` INNER JOIN roles on users.role = roles.id WHERE users.email=?";
     db.query(sql, [email], async (err, data) => {
-        if (err) {
-            return res.json(err);
-        }
-        if (data.length > 0) {
-            const user = data[0];
-            const passwordMatch = await bcrypt.compare(password, user.password);
+        try {
+            if (data.length > 0) {
+                const user = data[0];
+                const passwordMatch = await bcrypt.compare(password, user.password);
 
-            if (passwordMatch) {
-                if (user.disabled === 0) {
-                    const id = user.id;
-                    const role = user.role;
-                    const token = jwt.sign({ id, role }, "jwtSecretKey", { expiresIn: 300 });
-                    return res.json({ Login: true, token, user });
+                if (passwordMatch) {
+                    if (user.disabled === 0) {
+                        const id = user.id;
+                        const role = user.role;
+                        const token = jwt.sign({ id, role }, "jwtSecretKey", {
+                            expiresIn: 300,
+                        });
+                        return res.json({ Login: true, token, user });
+                    } else {
+                        return res.json({
+                            error: `Tài khoản đã bị vô hiệu hóa! Vui lòng liên hệ admin để biết thêm thông tin chi tiết`,
+                        });
+                    }
                 } else {
-                    return res.json({ error: `Tài khoản đã bị vô hiệu hóa! Vui lòng liên hệ admin để biết thêm thông tin chi tiết` });
+                    return res.json({ error: "Sai mật khẩu" });
                 }
             } else {
-                return res.json({ error: "Sai mật khẩu" });
+                // Người dùng không tồn tại
+                return res.json({ error: "Người dùng không tồn tại" });
             }
-        } else {
-            // Người dùng không tồn tại
-            return res.json({ error: "Người dùng không tồn tại" });
+        } catch (err) {
+            return res.json(err);
         }
     });
 });
@@ -140,34 +210,32 @@ app.get(`/api/product/:id`, (req, res) => {
     db.query(sql, [req.params.id], (err, data) => {
         if (err) return res.json(err);
 
-        const BASE_URL = req.protocol + '://' + req.get('host');
+        const BASE_URL = req.protocol + "://" + req.get("host");
 
-        data.map(product => {
-
+        data.map((product) => {
             const slideImages = [];
 
-            slideImages.push({
-                url: BASE_URL + `/products/${product.id}/${product.thumbnail}`,
-                name: '',
-                description: ''
-            })
+            // slideImages.push({
+            //     url: BASE_URL + `/products/${product.id}/${product.thumbnail}`,
+            //     name: '',
+            //     description: ''
+            // })
 
-            const productImages = product.image_urls.split(',').map(item => {
+            const productImages = product.image_urls.split(",").map((item) => {
                 return {
                     url: BASE_URL + `/products/${product.id}/${item}`,
-                    name: '',
-                    description: ''
-                }
-            })
+                    name: "",
+                    description: "",
+                };
+            });
 
-            slideImages.push(...productImages)
+            slideImages.push(...productImages);
 
-            return product.image_urls = slideImages
-
-        })
+            return (product.image_urls = slideImages);
+        });
 
         return res.json(data);
     });
 });
 
-app.listen(port, console.log(`Server running on port ${port}`))
+app.listen(port, console.log(`Server running on port ${port}`));

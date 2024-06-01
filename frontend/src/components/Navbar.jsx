@@ -6,17 +6,46 @@ const Navbar = () => {
     const [menu, setMenu] = useState("trangchu")
 
     return (
-        <nav className="w-full text-sm bg-[#feb0bd] text-white sticky top-0 z-40 font-semibold h-12">
-            <ul className="h-full flex items-center justify-between text-sm uppercase mx-48">
+        <nav className="w-full text-sm bg-[#feb0bd] text-white sticky top-0 z-40 font-semibold h-12 m-auto">
+            <ul className="h-full w-4/5 flex items-center justify-between text-sm uppercase m-auto relative">
                 <li className="hover:opacity-70" onClick={() => { setMenu("trangchu") }}>
                     <Link to="/" className={menu === "trangchu" ? "py-3 text-[red]" : "py-3"}>
                         Trang chủ
                     </Link>
                 </li>
-                <li className="hover:opacity-70" onClick={() => { setMenu("gaubongcaocap") }}>
-                    <Link to="/cua-hang/capybara" className={menu === "gaubongcaocap" ? "py-3 text-[red]" : "py-3"}>
+                <li onClick={() => { setMenu("gaubongcaocap") }}>
+                    <Link to="/cua-hang/capybara" className={menu === "gaubongcaocap" ? "py-3 text-[red] hover:opacity-70" : "py-3 hover:opacity-70"}>
                         Gấu bông cao cấp
                     </Link>
+                    {/* <ul className="absolute h-40 left-0 right-0 top-12 bg-white px-5 pb-5 pt-3 flex">
+                        <li className="text-black">
+                            <Link to="/">
+                                Gấu Bông Teddy
+                            </Link>
+                            <ul className="text-[#333333] font-normal">
+                                <li>Gấu Bông Teddy Khổng Lồ 2m – 3m</li>
+                                <li>Gấu Bông Teddy 1m5 – 1m6 – 1m7</li>
+                            </ul>
+                        </li>
+                        <li className="text-black">
+                            <Link to="/">
+                                Gấu Bông Teddy
+                            </Link>
+                            <ul className="text-[#333333] font-normal">
+                                <li>Gấu Bông Teddy Khổng Lồ 2m – 3m</li>
+                                <li>Gấu Bông Teddy 1m5 – 1m6 – 1m7</li>
+                            </ul>
+                        </li>
+                        <li className="text-black">
+                            <Link to="/">
+                                Gấu Bông Teddy
+                            </Link>
+                            <ul className="text-[#333333] font-normal">
+                                <li>Gấu Bông Teddy Khổng Lồ 2m – 3m</li>
+                                <li>Gấu Bông Teddy 1m5 – 1m6 – 1m7</li>
+                            </ul>
+                        </li>
+                    </ul> */}
                 </li>
                 <li className="hover:opacity-70" onClick={() => { setMenu("hoathinh") }}>
                     <Link to="/cua-hang/2" className={menu === "hoathinh" ? "py-3 text-[red]" : "py-3"}>

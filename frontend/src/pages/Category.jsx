@@ -13,7 +13,6 @@ const ProductList = () => {
     useEffect(() => {
         axios.get(`/api/products/${keyword}`)
             .then((res) => {
-                console.log(res.data, "data res");
                 setData(res.data);
                 setLoading(false);
             })
@@ -29,15 +28,18 @@ const ProductList = () => {
 
     if (data.length > 0) {
         return (
-            <div className="bg-white w-full h-auto px-48 my-10">
+            <div className="bg-white w-4/5 mx-auto h-auto my-10">
                 <div id="shop-category" >
                     <div className="flex justify-between items-center">
                         <p>
                             <span className="font-[600]">Showing 1-12</span> out of {data.length} products
                         </p>
-                        <div className="px-5 py-1 border-[1px] rounded-[40px]">
-                            Sort by
-                        </div>
+                        <select className="p-2 border-2" >
+                            <option value="" selected="" className="p-2 outline-none">Tất cả</option>
+                            <option value="" selected="" className="p-2 outline-none">Mới nhất</option>
+                            <option value="" selected="" className="p-2 outline-none">Giá cao đến thấp</option>
+                            <option value="" selected="" className="p-2 outline-none">Giá thấp đến cao</option>
+                        </select>
                     </div>
                     <div id="shop-category-products" className="flex flex-wrap justify-between my-4">
                         {data.map((item) => (
@@ -48,7 +50,7 @@ const ProductList = () => {
                         Xem thêm
                     </div>
                 </div>
-            </div>
+            </div >
         );
     } else {
         return null;

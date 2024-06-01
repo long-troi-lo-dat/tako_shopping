@@ -15,13 +15,18 @@ const ItemDetail = (props) => {
 
     useEffect(() => {
         window.scrollTo(0, 0)
-    }, [product]);
+        console.log(props)
+    }, [product, props]);
 
     return (
         <div className="mt-10 flex gap-8">
             <div className="">
                 {/* <div className="w-[590px] h-[600px] duration-500" style={{ backgroundImage: `url(${process.env.REACT_APP_URL_API}/products/${product.id}/${product.thumbnail}")` }}></div> */}
-                <div className="w-[590px] h-[600px] duration-500 bg-no-repeat bg-cover" style={{ backgroundImage: `url(${product.image_urls && product.image_urls[currentIndex].url})` }}></div>
+                {product.image_urls ?
+                    <div className="w-[590px] h-[600px] duration-500 bg-no-repeat bg-cover" style={{ backgroundImage: `url(${product.image_urls && product.image_urls[currentIndex].url})` }}></div>
+                    :
+                    <div className="w-[590px] h-[600px] duration-500 bg-no-repeat bg-cover" style={{ backgroundImage: `url(${product.thumbnail})` }}></div>
+                }
                 <div className="flex gap-2 mt-2">
                     {product.image_urls && product.image_urls.map((slide, slideIndex) => (
                         <div className="w-[78.24px] h-[78.24px] bg-cover" style={{ backgroundImage: `url(${slide.url})` }} key={slideIndex} onClick={() => goToSlide(slideIndex)}></div>
