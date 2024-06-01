@@ -2,7 +2,7 @@ import React from "react";
 
 const NewsLetter = () => {
     return (
-        <div className="mb-10 -mx-48">
+        <div className="w-full mb-10">
             <div className="flex flex-col items-center m-auto px-[140px] py-10 gap-[30px] bg-gradient-to-b from-pink-200 via-gray-100 to-green-200 ">
                 <h1 className="text-[#454545] text-[40px] font-[600]">Nhận thông báo về các ưu đãi qua mail</h1>
                 <p className="text-[#454545] text-[20px]">Tham gia để nhận thông báo mới nhất</p>

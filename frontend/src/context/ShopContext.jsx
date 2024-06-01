@@ -1,10 +1,12 @@
-import axios from "../axios";
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useEffect, useState, useDebugValue } from "react";
 
 export const ShopContext = createContext(null)
 
 const ShopContextProvider = (props) => {
+    const [auth, setAuth] = useState({});
 
+    useDebugValue(auth, auth => auth?.user ? "Logged In" : "Logged Out")
+    
     const [cartItems, setCartItems] = useState(() => {
         return JSON.parse(sessionStorage.getItem('cartItems')) || []
     });
@@ -57,7 +59,7 @@ const ShopContextProvider = (props) => {
         sessionStorage.setItem("cartItems", JSON.stringify(cartItems));
     }, [cartItems]);
 
-    const contextValue = { cartItems, addToCart, removeFromCart, deleteFromCart, clearCart, getCartTotal, };
+    const contextValue = { cartItems, addToCart, removeFromCart, deleteFromCart, clearCart, getCartTotal, auth, setAuth };
 
     return (
         <ShopContext.Provider value={contextValue}>

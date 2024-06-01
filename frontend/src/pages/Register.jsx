@@ -17,7 +17,13 @@ const Register = () => {
     };
 
     const handleRegisterSubmit = async (event) => {
-        await axios.post('/signup', formData)
+        await axios.post('/signup', formData, {
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Content-Type': 'application/json',
+            },
+            withCredentials: true
+        })
             .then(
                 res => {
                     console.log(res)

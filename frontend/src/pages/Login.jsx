@@ -19,7 +19,13 @@ const Login = () => {
 
     const handleLoginSubmit = (event) => {
         event.preventDefault();
-        axios.post('/login', formData)
+        axios.post('/login', formData, {
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Content-Type': 'application/json',
+            },
+            withCredentials: true
+        })
             .then((res) => {
                 const responseData = res.data;
                 console.log(res.data)

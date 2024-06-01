@@ -7,63 +7,55 @@ import Service from '../components/Service';
 const Home = () => {
     return (
         <>
-            <div className="bg-white w-full h-auto">
+            <div className="bg-white">
                 <div>
                     <div className="w-full h-[calc(100vh-144px)] relative group">
                         <Slider />
                     </div>
                 </div>
-                <div className="mx-48">
-                    <Service />
-                </div>
-                <div className="mx-48 mb-10">
-                    <div className="flex flex-wrap -mx-4">
-                        <div className="w-1/3 p-4">
-                            <a href="/#" className="w-full h-full">
-                                <img src={`${process.env.REACT_APP_URL_API}/cate/gaubong1.png`} alt="nothing" loading='lazy' className="transition-all duration-300 ease-in hover:transform hover:scale-105" />
-                            </a>
-                        </div>
-                        <div className="w-1/3 p-4">
-                            <a href="/#">
-                                <img src={`${process.env.REACT_APP_URL_API}/cate/gaubong3.png`} alt="nothing" loading='lazy' className="transition-all duration-300 ease-in hover:transform hover:scale-105" />
-                            </a>
-                        </div>
-                        <div className="w-1/3 p-4">
-                            <a href="/#">
-                                <img src={`${process.env.REACT_APP_URL_API}/cate/thu-bong-cute.jpg`} alt="nothing" loading='lazy' className="transition-all duration-300 ease-in hover:transform hover:scale-105" />
-                            </a>
-                        </div>
-                        <div className="w-1/3 p-4">
-                            <a href="/#">
-                                <img src={`${process.env.REACT_APP_URL_API}/cate/gaubong5.png`} alt="nothing" loading='lazy' className="transition-all duration-300 ease-in hover:transform hover:scale-105" />
-                            </a>
-                        </div>
-                        <div className="w-1/3 p-4">
-                            <a href="/#">
-                                <img src={`${process.env.REACT_APP_URL_API}/cate/gaubong4.png`} alt="nothing" loading='lazy' className="transition-all duration-300 ease-in hover:transform hover:scale-105" />
-                            </a>
-                        </div>
-                        <div className="w-1/3 p-4">
-                            <a href="/#">
-                                <img src={`${process.env.REACT_APP_URL_API}/cate/thu-bong-theo-mau-sac.png`} alt="nothing" loading='lazy' className="transition-all duration-300 ease-in hover:transform hover:scale-105" />
-                            </a>
+                <div className="w-4/5 h-auto m-auto">
+                    <div className="">
+                        <Service />
+                    </div>
+                    <div className="">
+                        <div className="flex flex-wrap -mx-4">
+                            <div className="w-1/3 p-4">
+                                <a href="/#" className="w-full h-full">
+                                    <img src={`${process.env.REACT_APP_URL_API}/cate/gaubong1.png`} alt="nothing" loading='lazy' className="transition-all duration-300 ease-in hover:transform hover:scale-105" />
+                                </a>
+                            </div>
+                            <div className="w-1/3 p-4">
+                                <a href="/#">
+                                    <img src={`${process.env.REACT_APP_URL_API}/cate/gaubong3.png`} alt="nothing" loading='lazy' className="transition-all duration-300 ease-in hover:transform hover:scale-105" />
+                                </a>
+                            </div>
+                            <div className="w-1/3 p-4">
+                                <a href="/#">
+                                    <img src={`${process.env.REACT_APP_URL_API}/cate/thu-bong-cute.jpg`} alt="nothing" loading='lazy' className="transition-all duration-300 ease-in hover:transform hover:scale-105" />
+                                </a>
+                            </div>
+                            <div className="w-1/3 p-4">
+                                <a href="/#">
+                                    <img src={`${process.env.REACT_APP_URL_API}/cate/gaubong5.png`} alt="nothing" loading='lazy' className="transition-all duration-300 ease-in hover:transform hover:scale-105" />
+                                </a>
+                            </div>
+                            <div className="w-1/3 p-4">
+                                <a href="/#">
+                                    <img src={`${process.env.REACT_APP_URL_API}/cate/gaubong4.png`} alt="nothing" loading='lazy' className="transition-all duration-300 ease-in hover:transform hover:scale-105" />
+                                </a>
+                            </div>
+                            <div className="w-1/3 p-4">
+                                <a href="/#">
+                                    <img src={`${process.env.REACT_APP_URL_API}/cate/thu-bong-theo-mau-sac.png`} alt="nothing" loading='lazy' className="transition-all duration-300 ease-in hover:transform hover:scale-105" />
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div className="w-full h-auto px-48">
-                    {/* <div className="mb-10 mx-48">
-                        <h1 className="text-2xl text-center text-red-500 uppercase font-bold border-b-[1px] border-b-[#02c4c1]">Bộ sưu tập Cabybara</h1>
-                        <div className="flex flex-wrap justify-between my-4">
-                            <Products />
-                            <Products />
-                            <Products />
-                            <Products />
-                            <button className="m-auto bg-red-300 border-2 rounded-xl px-4 py-2 text-white font-medium hover:bg-[#02c4c1] transition all ease-out duration-200">XEM TẤT CẢ BỘ SƯU TẦM CABYBARA</button>
-                        </div>
-                    </div> */}
                     <Cabybara />
-                    <NewsLetter />
-                    <div className="mb-10">
+                </div>
+                <NewsLetter />
+                <div className="w-4/5 h-auto m-auto">
+                    <div className="">
                         <h1 className="text-2xl text-center text-red-500 uppercase font-bold border-b-[1px] border-b-[#02c4c1]">CHUYỆN NHÀ GẤU</h1>
                         <div className="grid grid-cols-2 mt-4 gap-4">
                             <div className="flex flex-auto">
@@ -96,9 +88,10 @@ const Home = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="mb-10">
+                    <div className="">
                         {/* <Carousel /> */}
                     </div>
+
                 </div>
             </div>
         </>
