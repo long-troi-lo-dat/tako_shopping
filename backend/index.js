@@ -74,13 +74,13 @@ app.post("/create-product", upload.array("images", 10), (req, res) => {
         ],
         (err, result) => {
             if (err) {
-                console.error('Failed to insert product:', err);
+                console.error('Thêm sản phẩm thất bại:', err);
                 return res.status(500).json({ error: "Failed to create product" });
             }
 
             const productId = result.insertId;
             req.productId = productId;
-            
+
             const imageQueries = req.files.map((file) => {
                 const imageQuery =
                     "INSERT INTO products_images (url, product_id) VALUES (?, ?)";
