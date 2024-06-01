@@ -80,8 +80,7 @@ app.post("/create-product", upload.array("images", 10), (req, res) => {
 
             const productId = result.insertId;
             req.productId = productId;
-
-            // Save images to database
+            
             const imageQueries = req.files.map((file) => {
                 const imageQuery =
                     "INSERT INTO products_images (url, product_id) VALUES (?, ?)";
