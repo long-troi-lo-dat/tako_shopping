@@ -76,7 +76,7 @@ function App() {
               </>
             }
           />
-          <Route path="/admin/" element={<HomeAdmin />}></Route>
+          <Route path="/admin" element={<HomeAdmin />}></Route>
           <Route path="/helloworld" element={<Helloworld />} />
         </Routes>
       </BrowserRouter>
