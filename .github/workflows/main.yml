@@ -1,28 +1,27 @@
 name: remote ssh command
-on: 
+on:
   push:
     branches: [main]
   pull_request:
-    types: [closed]
+    branches: [main]
 jobs:
-
   build:
     name: Build
     runs-on: ubuntu-latest
     if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true
     steps:
-    - name: executing remote ssh commands using password
-      uses: appleboy/ssh-action@v1.0.3
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
-        port: ${{ secrets.PORT }}
-        script: |
-          cd /home/gaubongs/api.thubongstore.online/tako_shopping
-          git pull origin main
-          source /home/gaubongs/nodevenv/api.thubongstore.online/tako_shopping/frontend/20/bin/activate
-          cd /home/gaubongs/api.thubongstore.online/tako_shopping/frontend
-          npm install
-          npm run build
-          cp -r /home/gaubongs/api.thubongstore.online/tako_shopping/frontend/build/. /home/gaubongs/thubongstore.online
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd /home/gaubongs/api.thubongstore.online/tako_shopping
+            git pull origin main
+            source /home/gaubongs/nodevenv/api.thubongstore.online/tako_shopping/frontend/20/bin/activate
+            cd /home/gaubongs/api.thubongstore.online/tako_shopping/frontend
+            npm install
+            npm run build
+            cp -r /home/gaubongs/api.thubongstore.online/tako_shopping/frontend/build/. /home/gaubongs/thubongstore.online
