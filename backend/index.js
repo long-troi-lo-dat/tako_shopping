@@ -29,7 +29,7 @@ app.use(express.json());
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         const productId = req.productId;
-        console.log(productId, "productId dòng 32")
+        console.log(productId, "console productId dòng 32")
         const dir = `./images/products/${productId}`;
         if (!fs.existsSync(dir)) {
             fs.mkdirSync(dir, { recursive: true });
@@ -38,7 +38,7 @@ const storage = multer.diskStorage({
     },
     filename: (req, file, cb) => {
         const productId = req.productId;
-        console.log(productId, "productId dòng 41")
+        console.log(productId, "console productId dòng 41")
         const dir = `./images/products/${productId}`;
         const count = fs.readdirSync(dir).length;
         cb(null, `${count + 1}.jpg`);
