@@ -15,6 +15,7 @@ const db = require("./src/configs/db");
 const app = express();
 
 const BaseURL = process.env.REACT_APP_URL_LOCAL;
+
 app.use(
     cors({
         origin: BaseURL,
