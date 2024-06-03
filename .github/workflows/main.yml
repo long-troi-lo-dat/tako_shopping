@@ -7,9 +7,9 @@ on:
     types: [closed]
 jobs:
   build:
+    if: github.event.pull_request.merged == true || github.event_name == 'push'
     name: Build
     runs-on: ubuntu-latest
-    if: github.event.pull_request.merged == true || github.event_name == 'push'
     steps:
       - name: executing remote ssh commands using password
         uses: appleboy/ssh-action@v1.0.3
