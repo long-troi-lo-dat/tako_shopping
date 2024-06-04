@@ -19,7 +19,7 @@ jobs:
             git pull origin main
             source /home/gaubongs/nodevenv/api.thubongstore.online/tako_shopping/backend/20/bin/activate
             cd /home/gaubongs/api.thubongstore.online/tako_shopping/backend
-            npm install
+            npm install --production
             source /home/gaubongs/nodevenv/api.thubongstore.online/tako_shopping/frontend/20/bin/activate
             cd /home/gaubongs/api.thubongstore.online/tako_shopping/frontend
             npm install
