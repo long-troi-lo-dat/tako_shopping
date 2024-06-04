@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 
 const Item = (props) => {
     return (
-        <div className="w-64 text-center bg-white rounded-2xl mb-8 shadow-xl pb-4 hover:drop-shadow-2xl transition-all ease-in-out duration-500">
+        <div className="w-64 text-center bg-white rounded-2xl mb-8 shadow-xl pb-4 hover:drop-shadow-2xl transition-all ease-in-out duration-500" data-aos="fade-up">
             <Link to={`/san-pham/${props.id}`} onClick={window.scrollTo(0, 0)} className="hover:text-[#02c4c1] transition-all ease-in duration-200 "><img src={`${process.env.REACT_APP_URL_API}/products/${props.id}/${props.thumbnail}`} alt="nothing" className="rounded-tr-2xl rounded-tl-2xl" /></Link>
             <p className="pt-2"><Link to={`/san-pham/${props.id}`} className="hover:text-[#02c4c1] transition-all ease-in duration-200 font-medium block lowercase first-letter:uppercase min-h-12">{props.name}</Link></p>
             <p className="font-semibold py-2 cursor-default">{Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(props.price)}</p>
