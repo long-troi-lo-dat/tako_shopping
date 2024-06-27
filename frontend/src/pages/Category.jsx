@@ -42,8 +42,8 @@ const ProductList = () => {
                         </select>
                     </div>
                     <div id="shop-category-products" className="flex flex-wrap justify-between my-4">
-                        {data.map((item) => (
-                            <Item key={item.id} id={item.id} name={item.name} thumbnail={item.thumbnail} price={item.price}/>
+                        {data.map((item, i) => (
+                            <Item key={item.id} id={item.id} name={item.name} thumbnail={item.thumbnail} price={item.price} delay={i * 200} />
                         ))}
                     </div>
                     <div className="flex justify-center items-center mx-auto my-5 w-[213px] h-[59px] rounded-[75px] bg-[#ededed] text-[18px] font-[500] text-[#787878]">

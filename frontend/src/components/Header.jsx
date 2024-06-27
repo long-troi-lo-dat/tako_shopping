@@ -74,7 +74,7 @@ const Header = () => {
                         <a href="/#" rel="home" className="flex items-center">
                             <img
                                 loading="lazy"
-                                src={`${process.env.REACT_APP_URL_API}/GAUBONG-THEOYEUCAUCUANGUOILA.png`}
+                                src={`${process.env.REACT_APP_URL_API}/src/images/GAUBONG-THEOYEUCAUCUANGUOILA.png`}
                                 alt="Gấu bông online"
                                 className="h-16"
                             />
